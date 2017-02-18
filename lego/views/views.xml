@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    
+    <record model="ir.actions.act_window" id="set_list_action">
+        <field name="name">Sets</field>
+        <field name="res_model">lego.set</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de sets">
+                <field name="name" />
+                <field name="set_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="producto_list_action">
+        <field name="name">Productos</field>
+        <field name="res_model">lego.producto</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de productos">
+                <field name="name" />
+                <field name="producto_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="coleccionista_list_action">
+        <field name="name">coleccionista</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de turistas">
+                <field name="name" />
+                <field name="website"/>
+                <field name="producto_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <menuitem name="Club de Legos" id="lego_menu_root"/>
+    
+    <menuitem name="Sets" id="lego_menu_sets" parent="lego_menu_root"/>
+    <menuitem name="Productos" id="lego_menu_productos" parent="lego_menu_root"/>
+    <menuitem name="Coleccionistas" id="lego_menu_coleccionistas" parent="lego_menu_root"/>
+    
+    <menuitem name="listado de sets" id="lego_list_sets" parent="lego_menu_sets"
+              action="set_list_action"/>
+    <menuitem name="listado de productos" id="lego_list_productos" parent="lego_menu_productos"
+              action="producto_list_action"/>
+    <menuitem name="listado de coleccionistas" id="lego_list_coleccionistas" parent="lego_menu_coleccionistas"
+              action="coleccionista_list_action"/>
+    
+        
+        
+        <record model="ir.ui.view" id="set_form_view">
+            <field name="name">set.form</field>
+            <field name="model">lego.set</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de sets">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="producto_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="producto_form_view">
+            <field name="name">producto.form</field>
+            <field name="model">lego.producto</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de productos">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="set_id"/>
+                            <field name="coleccionista"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="partner_coleccionista_form_view">
+            <field name="name">coleccionista.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Formulario de coleccionistas">
+                        <group>
+                            <field name="producto"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>                
+  </data>
+</openerp>

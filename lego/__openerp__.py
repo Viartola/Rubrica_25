@@ -8,9 +8,10 @@
         Lego
     """,
 
+    'icon': "/lego/static/img/lego.png",
 
     'author': "Jaime Lopez Viartola",
-    'website': "https://www.lego.com/es-es",
+    'website': "http://viartolasalesiano.blogspot.com.es/2012_12_01_archive.html",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml

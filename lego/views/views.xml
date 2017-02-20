@@ -18,14 +18,9 @@
     <record model="ir.actions.act_window" id="producto_list_action">
         <field name="name">Productos</field>
         <field name="res_model">lego.producto</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="arch" type="xml">
-            <tree string="Listado de productos">
-                <field name="name" />
-                <field name="producto_id"/>
-            </tree>
-        </field>
     </record>
 
     <record model="ir.actions.act_window" id="coleccionista_list_action">
@@ -34,7 +29,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="arch" type="xml">
-            <tree string="Listado de turistas">
+            <tree string="Listado de coleccionistas">
                 <field name="name" />
                 <field name="website"/>
                 <field name="producto_id"/>
@@ -80,6 +75,8 @@
                     <sheet>
                         <group>
                             <field name="name" />
+                            <field name="pieces"/>
+                            <field name="pieces_res"/>
                             <field name="set_id"/>
                             <field name="coleccionista"/>
                         </group>
@@ -101,6 +98,19 @@
                     </page>
                 </notebook>
             </field>
-        </record>                
+        </record> 
+
+        <record model="ir.ui.view" id="producto_tree_view">
+            <field name="name">producto.tree</field>
+            <field name="model">lego.producto</field>
+            <field name="arch" type="xml">
+                <tree string="Listado de productos">
+                    <field name="name"/>
+                    <field name="pieces"/>
+                    <field name="pieces_res"/>
+                    <field name="total"/>
+                </tree>
+            </field>
+        </record>               
   </data>
 </openerp>
